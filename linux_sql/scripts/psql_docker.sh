@@ -8,15 +8,14 @@ cmdd=$1
 db_username=$2
 db_password=$3
 
+# Check to see if the container exists
 jrvs_exists=$(docker container ls -a -f name=jrvs-psql | wc -l)
 
 usage="Usage: ./scripts/psql_docker.sh start|stop|create [db_username][db_password]"
 
-#hint: use case statement to handle argument
-#https://linuxize.com/post/bash-case-statement/
-case $1 in
+#create container / start container / stop container case statement
+case cmdd in
 	create)
-  #hint `docker container ls -a -f name=jrvs-psql | wc -l` should be 2
   if [ "$jrvs_exists" -ge 2 ]; then
     echo -e "Error: This container has already been created. \n$usage"
     exit 1
@@ -32,8 +31,6 @@ case $1 in
   docker volume create pgdata
   #create docker container jrvs-psql
   docker run --name jrvs-psql -e POSTGRES_PASSWORD=${db_password} -e POSTGRES_USER=${db_username} -d -v pgdata:/var/lib/postgresql/data -p 5432:5432 postgres
-  #What's $? variable? https://bit.ly/2LanHUi
-  #$? is the exit value 0 for success and 1 for failure
   exit $?
 
 #Check if psql instance was created

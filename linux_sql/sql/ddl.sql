@@ -15,6 +15,7 @@ CREATE TABLE IF NOT EXISTS PUBLIC.host_info
 CREATE TABLE IF NOT EXISTS PUBLIC.host_usage
   (
      timestamp    TIMESTAMP NOT NULL,
+     memory_free    INTEGER NOT NULL,
      host_id        SERIAL NOT NULL,
      cpu_idle       INTEGER NOT NULL,
      cpu_kernel     INTEGER NOT NULL,

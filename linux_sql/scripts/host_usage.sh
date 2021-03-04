@@ -1,9 +1,5 @@
 #! /bin/bash
-# Script usage
-#bash scripts/host_usage.sh psql_host psql_port db_name psql_user psql_password
-# Example
-#bash scripts/host_usage.sh localhost 5432 host_agent postgres password
-usage="./scripts/host_usage.sh psql_host psql_port db_name psql_user psql_password"
+usage="$0 psql_host psql_port db_name psql_user psql_password"
 
 #validate arguments
 if [ "$#" -ne 5 ]; then
@@ -30,8 +26,8 @@ diskav=`df -m`
 memory_free=$(echo "$usage_info"| grep Mem: | awk '{print $4}' | xargs)
 cpu_idle=$(echo "$cpuidle_calc" | egrep "%Cpu" | awk '{print int($8+0.5)}')
 cpu_kernel=$(echo "$cpu_info" | sed -n '3,${p;n;n;}' | awk '{print $14}' | xargs)
-disk_io=$(echo "$disk_info" | egrep "sda" | awk '{print $2}' | xargs)
-disk_available=$(echo "$diskav" | egrep "/dev/sda2" | awk '{print $2}' | xargs)
+disk_io=$(echo "$disk_info" | egrep "sda" | awk '{print $10}' | xargs)
+disk_available=$(echo "$diskav" | egrep "/dev/sda2" | awk '{print $4}' | xargs)
 timestamp=$(date "+%Y-%m-%d %H:%M:%S")
 
 #Insert into tables

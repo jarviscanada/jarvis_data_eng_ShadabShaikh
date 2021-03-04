@@ -1,9 +1,5 @@
 #! /bin/bash
-# Script usage
-#./scripts/host_info.sh psql_host psql_port db_name psql_user psql_password
-# Example
-#./scripts/host_info.sh "localhost" 5432 "host_agent" "postgres" "mypassword"
-usage="./scripts/host_info.sh psql_host psql_port db_name psql_user psql_password"
+usage="$0 psql_host psql_port db_name psql_user psql_password"
 
 #validate arguments
 if [ "$#" -ne 5 ]; then

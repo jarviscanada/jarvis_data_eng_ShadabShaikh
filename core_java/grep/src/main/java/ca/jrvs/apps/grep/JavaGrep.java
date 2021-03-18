@@ -1,6 +1,9 @@
-/*package ca.jrvs.apps.grep;
+package ca.jrvs.apps.grep;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.File;
+import java.util.List;
 
 public interface JavaGrep {
 
@@ -8,7 +11,7 @@ public interface JavaGrep {
 
   List<File> listFiles(String rootDir);
 
-  List<String> readLine(File inputFile);
+  List<String> readLines(File inputFile) throws FileNotFoundException;
 
   boolean containsPattern(String line);
 
@@ -27,4 +30,3 @@ public interface JavaGrep {
   void setOutFile(String outFile);
 
 }
-*/

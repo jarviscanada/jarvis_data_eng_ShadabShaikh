@@ -1,6 +1,5 @@
 package ca.jrvs.apps.grep;
 
-//import java.util.logging.Logger;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;

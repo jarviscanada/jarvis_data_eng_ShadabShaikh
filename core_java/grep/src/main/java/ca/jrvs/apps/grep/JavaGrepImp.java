@@ -8,11 +8,12 @@ import java.io.FileWriter;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.apache.log4j.BasicConfigurator;
-
 
 public class JavaGrepImp implements JavaGrep{
 
@@ -54,39 +55,39 @@ public class JavaGrepImp implements JavaGrep{
 
   @Override
   public void process() throws IOException {
+    try {
+      List<String> matchedLines = new ArrayList<>();
 
-    List<String> matchedLines = new ArrayList<>();
-
-    /*matchedLines = []
-    for file in listFilesRecursively(rootDir)
-    for line in readLines(file)
-    if containsPattern(line)
-    matchedLines.add(line)
-    writeToFile(matchedLines)*/
-    for (File file: listFiles(getRootPath())){
-      for(String line: readLines(file)){
-        if (containsPattern(line)){
-          matchedLines.add(line);
+      for (File file : listFiles(getRootPath())) {
+        for (String line : readLines(file)) {
+          if (containsPattern(line)) {
+            matchedLines.add(line);
+          }
         }
       }
+      writeToFile(matchedLines);
+    } catch (IOException ex) {
+      logger.error("USAGE: JavaGrep regex rootPath outFile");
     }
-    writeToFile(matchedLines);
 
 
   }
 
   @Override
   public List<File> listFiles(String rootDir){
+    //Setup files and directories arraylists
     List<File> results = new ArrayList<>();
+    Queue<File> dirs = new LinkedList<>();
+    dirs.add(new File(rootDir));
 
-
-    File[] files = new File(rootDir).listFiles();
-    //If this pathname does not denote a directory, then listFiles() returns null.
-
-    assert files != null;
-    for (File file : files) {
-      if (file.isFile()) {
-        results.add(new File(file.getName()));
+    //Recursive check for directories or files. Files are added to the results Arraylist and returned
+    while (!dirs.isEmpty()) {
+      for (File f : dirs.poll().listFiles()) {
+        if(f.isDirectory()) {
+          dirs.add(f);
+        } else if (f.isFile()) {
+          results.add(f);
+        }
       }
     }
     return results;
@@ -96,17 +97,19 @@ public class JavaGrepImp implements JavaGrep{
   }
 
   @Override
-  public List<String> readLines(File inputFile) throws FileNotFoundException {
+  public List<String> readLines(File inputFile) throws FileNotFoundException{
     List<String> lines = new ArrayList<>();
     BufferedReader reader;
     try {
       reader = new BufferedReader(new FileReader(inputFile));
-      String line1 = reader.readLine();
-      while (line1 != null) {
-        lines.add(line1);
-        line1 = reader.readLine();
+      String currentLine = reader.readLine();
+      while (currentLine != null) {
+        lines.add(currentLine);
+        currentLine = reader.readLine();
       }
       reader.close();
+    } catch (FileNotFoundException e) {
+      logger.error("FileNotFoundException", e);
     } catch (IOException e) {
       logger.error("IOException", e);
     }
@@ -121,11 +124,15 @@ public class JavaGrepImp implements JavaGrep{
 
   @Override
   public void writeToFile(List<String> lines) throws IOException {
-    FileWriter writer = new FileWriter(getOutFile());
-    for (String str: lines) {
-      writer.write(str + System.lineSeparator());
+    try {
+      FileWriter writer = new FileWriter(getOutFile());
+      for (String str : lines) {
+        writer.write(str + System.lineSeparator());
+      }
+      writer.close();
+    } catch (IOException ex) {
+      logger.error("Cannot write to file", ex);
     }
-    writer.close();
   }
 
   public static void main(String[] args){

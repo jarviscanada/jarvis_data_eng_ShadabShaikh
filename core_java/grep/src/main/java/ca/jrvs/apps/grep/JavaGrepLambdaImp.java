@@ -33,6 +33,7 @@ public class JavaGrepLambdaImp extends JavaGrepImp{
   public List<String> readLines(File inputFile) throws FileNotFoundException {
     List<String> list = new ArrayList<>();
     try
+        //Use Stream to capture lines and return as a list
         (Stream<String> stream = Files.lines(inputFile.toPath())) {
           list = stream.collect(Collectors.toList());
       }

@@ -57,4 +57,3 @@ Project source code: [https://github.com/jarviscanada/jarvis_data_eng_ShadabShai
 - Spark and Python for Big Data with PySpark
 - Crew Leader | Habitat for Humanity: Led teams of corporate volunteers in constructing houses involving tasks such as drywall plastering, priming and painting, and installing insulation
 - Assistant Soccer Coach | West Rouge Soccer Club: Demonstrated leadership by instructing young players on dribbling, passing, team tactics and strategies
-- Volunteer, ABC Food bank: Ut enim ad minim veniam

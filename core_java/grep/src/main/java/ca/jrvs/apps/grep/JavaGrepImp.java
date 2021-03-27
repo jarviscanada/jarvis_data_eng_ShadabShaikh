@@ -66,7 +66,7 @@ public class JavaGrepImp implements JavaGrep{
       }
       writeToFile(matchedLines);
     } catch (IOException ex) {
-      logger.error("USAGE: JavaGrep regex rootPath outFile");
+      logger.error("USAGE: JavaGrep regex rootPath outFile", ex);
     }
 
 
@@ -151,7 +151,7 @@ public class JavaGrepImp implements JavaGrep{
     try {
       javaGrepImp.process();
     } catch (Exception ex) {
-      javaGrepImp.logger.error(ex.getMessage(), ex);
+      javaGrepImp.logger.error("Error implementing process.", ex);
 
     }
 

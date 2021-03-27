@@ -5,8 +5,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 public abstract class DataAccessObject<T extends DataTransferObject> {
+
+  final Logger logger = LoggerFactory.getLogger(DataTransferObject.class);
 
   protected final Connection connection;
   protected final static String LAST_VAL = "SELECT last_value FROM ";
@@ -37,8 +42,7 @@ public abstract class DataAccessObject<T extends DataTransferObject> {
       }
       return key;
     } catch (SQLException e) {
-      e.printStackTrace();
-      throw new RuntimeException(e);
+      throw new RuntimeException("Error with getLastVal on result set.", e);
     }
   }
 }

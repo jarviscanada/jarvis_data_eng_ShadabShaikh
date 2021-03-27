@@ -1,0 +1,127 @@
+{
+  "education": [
+    {
+      "awards_achievements": null,
+      "degree": "Bachelor of Computer Engineering",
+      "department": "Electrical and Computer Engineering",
+      "duration": "Graduated 2019",
+      "school_name": "Ryerson University"
+    }
+  ],
+  "github_repo_root_url": "https://github.com/jarviscanada/jarvis_data_eng_ShadabShaikh",
+  "highlighted_projects": [
+    {
+      "description": "Developed a predictive deep learning model using kaggle Lending Club loan data to determine the likelihood of loan repayment. The project includes data exploratory analysis and graphing, pre-processing, and designing a GPU-based model utilizing TensorFlow for potential customers which produced a weighted average F1 score of 87%.",
+      "git_url": "https://github.com/ShadabShaikhEng/LendingClub_NN",
+      "name": "Loan repayment forecasting application"
+    },
+    {
+      "description": "Programmed an event and student management system in Java with different levels of account and account privileges. The system aims to provide a secure way to log in and access grades for both students and parents. Coaches can add/modify events and admins can create and manage accounts and assign roles. The project uses JUnit testing for verifying the functions of the system.",
+      "git_url": "https://github.com/ShadabShaikhEng/JavaSwimProject",
+      "name": "Swim Club Management System"
+    }
+  ],
+  "jarvis_projects": [
+    {
+      "description": [
+        "Twitter App: Constructed a Java application implementing DAO, Maven, Mockito, JSON, Spring, JUnit, and Twitter REST API to allow users to post, fetch and delete tweets. Applied JUnit and integration testing and deployed application using Docker to Docker Hub.",
+        "JDBC App: Implemented a retail customer orders database utilizing JDBC with PostgreSQL and psql CLI. The RDBMS followed the CRUD data access pattern which allowed for database manipulation.",
+        "Grep App: Simulated the Unix grep command through an application leveraging regex to recursively seek and then write relevant matching lines into an output file. The command-line-based application was further optimized with another approach using Lambda expressions and the Stream API."
+      ],
+      "git_url": "/core_java",
+      "name": "Core Java Apps"
+    },
+    {
+      "description": "Developed a Linux cluster monitoring tool in CentOS that monitors hardware and resources of network-connected machines and relays the data to a PostgreSQL database. Used docker to deploy the bash scripts that create the RDBMS database, parse the data, and populate the tables. The application provides important data to the infrastructure team to generate reports for node failure detection and future resource planning purposes.",
+      "git_url": "/linux_sql",
+      "name": "Cluster Monitoring Agent"
+    },
+    {
+      "description": "To be implemented.",
+      "git_url": "/springboot",
+      "name": "Springboot App"
+    },
+    {
+      "description": "To be implemented.",
+      "git_url": "/python_data_anlytics",
+      "name": "Python Data Analytics"
+    },
+    {
+      "description": "To be implemented.",
+      "git_url": "/hadoop",
+      "name": "Hadoop"
+    },
+    {
+      "description": "To be implemented.",
+      "git_url": "/spark",
+      "name": "Spark"
+    },
+    {
+      "description": "To be implemented.",
+      "git_url": "/cloud_devops",
+      "name": "Cloud/DevOps"
+    }
+  ],
+  "name": "Shadab Shaikh",
+  "others": [
+    {
+      "bullets": [
+        "Python for Data Science and Machine Learning Bootcamp",
+        "Complete TensorFlow 2 and Keras Deep Learning Bootcamp",
+        "Spark and Python for Big Data with PySpark"
+      ],
+      "title": "Certificates"
+    },
+    {
+      "bullets": [
+        "Crew Leader | Habitat for Humanity: Led teams of corporate volunteers in constructing houses involving tasks such as drywall plastering, priming and painting, and installing insulation",
+        "Assistant Soccer Coach | West Rouge Soccer Club: Demonstrated leadership by instructing young players on dribbling, passing, team tactics, and strategies"
+      ],
+      "title": "Activities/Hobbies"
+    }
+  ],
+  "professional_experience": [
+    {
+      "company": "Jarvis",
+      "description": "Worked in an agile environment with a scrum team developing Data Engineering projects. Achieved successful completion on projects focused on Bash, RDBMS/SQL, Java, Docker, Maven, and version control comfortably on both WSL and Linux (CentOS) environments. Effectively contributed to all stages of product Software Development Life Cycle while applying Agile best practices.",
+      "duration": "2021-present",
+      "title": "Software Developer"
+    },
+    {
+      "company": "Canada Computers",
+      "description": "Designed and advised customers in making their custom computer builds for specific needs and budgets. Diagnosed computer issues and provided easily understood technical solutions to laypersons. Reduced data migration costs and increased data import efficiency by 80% by designing an automated data flow that generates QR codes for product IDs, creation dates, and times using excel pivot tables and vlookup. Consistently placed within the top 3 employees in achieving and exceeding monthly targets.",
+      "duration": "2018 - Present",
+      "title": "Technology Sales Associate"
+    }
+  ],
+  "skills": {
+    "competent": [
+      "C",
+      "HTML",
+      "Matplotlib",
+      "EC2 (Amazon Web Services)",
+      "TensorFlow",
+      "Jupyter Notebook",
+      "Maven"
+    ],
+    "familiar": [
+      "Computer Networks",
+      "Google Cloud Platform",
+      "Hadoop",
+      "Javascript",
+      "HTML/CSS"
+    ],
+    "proficient": [
+      "Java",
+      "Python/Numpy/Pandas/PySpark",
+      "RDBMS/SQL",
+      "Linux/Bash",
+      "Agile/Scrum",
+      "Git/GitHub",
+      "Docker",
+      "Integration/Unit Testing",
+      "Data Structures and algorithms"
+    ]
+  },
+  "summary": "I am a detail-oriented computer engineering graduate who is excited to apply my hands-on programming experience to the field. My background involves a heavy analytical mindset with a multitude of personal, professional, and development projects revolving around data engineering. My passion for data and software engineering originates from the core concepts of discovery, insights, and innovation. I have been fascinated by driving informed decisions and delivering the data to make it happen. My interest started early as I was involved in finding the best value for some of the services used in our household. I have applied some of the same methods to my personal projects which include: A Swim management system, and a python loan repayment modeling algorithm that leverages predictive deep learning using kaggle data sets. During my time at Jarvis Consulting, I gained the opportunity to work with Java, SQL, Linux/Bash, REST APIs, Docker, and other industry-leading technologies with real-world applications. I am versed in the Scrum Agile methodology and have diligently carried out my duties as a team lead. With my practical experience and natural curiosity, I look forward to applying my skills to a great team and acquire new opportunities to learn."
+}

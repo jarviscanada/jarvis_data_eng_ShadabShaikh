@@ -1,14 +1,17 @@
 package ca.jrvs.apps.jdbc;
 
 import ca.jrvs.apps.jdbc.util.DataAccessObject;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class CustomerDAO extends DataAccessObject<Customer> {
+
+  final Logger logger = LoggerFactory.getLogger(OrderDAO.class);
 
   private static final String INSERT = "INSERT INTO customer (first_name, last_name," +
       "email, phone, address, city, state, zipcode) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
@@ -28,7 +31,7 @@ public class CustomerDAO extends DataAccessObject<Customer> {
   @Override
   public Customer findById(long id) {
     Customer customer = new Customer();
-    try (PreparedStatement statement = this.connection.prepareStatement(GET_ONE);) {
+    try (PreparedStatement statement = this.connection.prepareStatement(GET_ONE)) {
       statement.setLong(1, id);
       ResultSet rs = statement.executeQuery();
       while (rs.next()) {
@@ -43,8 +46,7 @@ public class CustomerDAO extends DataAccessObject<Customer> {
         customer.setZipCode(rs.getString("zipcode"));
       }
     } catch (SQLException e) {
-      e.printStackTrace();
-      throw new RuntimeException(e);
+      logger.error("Prepared Statement or SQL execution with result set had issues.", e);
     }
     return customer;
   }
@@ -57,7 +59,7 @@ public class CustomerDAO extends DataAccessObject<Customer> {
   @Override
   public Customer update(Customer dto) {
     Customer customer = null;
-    try (PreparedStatement statement = this.connection.prepareStatement(UPDATE);) {
+    try (PreparedStatement statement = this.connection.prepareStatement(UPDATE)) {
       statement.setString(1, dto.getFirstName());
       statement.setString(2, dto.getLastName());
       statement.setString(3, dto.getEmail());
@@ -70,15 +72,14 @@ public class CustomerDAO extends DataAccessObject<Customer> {
       statement.execute();
       customer = this.findById(dto.getId());
     } catch (SQLException e) {
-      e.printStackTrace();
-      throw new RuntimeException(e);
+      logger.error("Prepared Statement or SQL execution with result set had issues.", e);
     }
     return customer;
   }
 
   @Override
   public Customer create(Customer dto) {
-    try (PreparedStatement statement = this.connection.prepareStatement(INSERT);) {
+    try (PreparedStatement statement = this.connection.prepareStatement(INSERT)) {
       statement.setString(1, dto.getFirstName());
       statement.setString(2, dto.getLastName());
       statement.setString(3, dto.getEmail());
@@ -91,19 +92,19 @@ public class CustomerDAO extends DataAccessObject<Customer> {
       int id = this.getLastVal(CUSTOMER_SEQUENCE);
       return this.findById(id);
     } catch (SQLException e) {
-      e.printStackTrace();
-      throw new RuntimeException(e);
+      throw new RuntimeException("Prepared Statement or SQL execution with result set had issues.",
+          e);
     }
   }
 
   @Override
   public void delete(long id) {
-    try (PreparedStatement statement = this.connection.prepareStatement(DELETE);) {
+    try (PreparedStatement statement = this.connection.prepareStatement(DELETE)) {
       statement.setLong(1, id);
       statement.execute();
     } catch (SQLException e) {
-      e.printStackTrace();
-      throw new RuntimeException(e);
+      throw new RuntimeException("Prepared Statement or SQL execution with result set had issues.",
+          e);
     }
   }
 }

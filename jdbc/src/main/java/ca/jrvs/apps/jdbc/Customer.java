@@ -3,6 +3,7 @@ package ca.jrvs.apps.jdbc;
 import ca.jrvs.apps.jdbc.util.DataTransferObject;
 
 public class Customer implements DataTransferObject {
+
   private long id;
   private String firstName;
   private String lastName;

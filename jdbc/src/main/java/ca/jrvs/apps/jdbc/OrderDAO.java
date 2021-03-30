@@ -27,6 +27,7 @@ public class OrderDAO extends DataAccessObject<Order> {
       + "  join product p on ol.product_id = p.product_id\n"
       + "where o.order_id = ?";
 
+  private static final String GET_FOR_CUST = "SELECT * FROM get_orders_by_customer(?)";
 
   public OrderDAO(Connection connection) {
     super(connection);
@@ -46,7 +47,6 @@ public class OrderDAO extends DataAccessObject<Order> {
           order.setCustomerLastName(rs.getString(2));
           order.setCustomerEmail(rs.getString(3));
           order.setId(rs.getLong(4));
-          // orderId = order.getId();
           order.setCreationDate(rs.getDate(5));
           order.setTotal_due(rs.getFloat(6));
           order.setStatus(rs.getString(7));
@@ -90,5 +90,46 @@ public class OrderDAO extends DataAccessObject<Order> {
   @Override
   public void delete(long id) {
 
+  }
+
+  public List<Order> getOrdersForCustomer(long customerId) {
+    List<Order> orders = new ArrayList<>();
+    try (PreparedStatement statement = this.connection.prepareStatement(GET_FOR_CUST)) {
+      statement.setLong(1, customerId);
+      ResultSet rs = statement.executeQuery();
+      long orderId = 0;
+      Order order = null;
+      while (rs.next()) {
+        long localOrderId = rs.getLong(4);
+        if (orderId != localOrderId) {
+          order = new Order();
+          orders.add(order);
+          order.setId(localOrderId);
+          orderId = localOrderId;
+          order.setCustomerFirstName(rs.getString(1));
+          order.setCustomerLastName(rs.getString(2));
+          order.setCustomerEmail(rs.getString(3));
+          order.setCreationDate(rs.getDate(5));
+          order.setTotal_due(rs.getFloat(6));
+          order.setStatus(rs.getString(7));
+          order.setSalespersonFirstName(rs.getString(8));
+          order.setSalespersonLastName(rs.getString(9));
+          order.setSalespersonEmail(rs.getString(10));
+          List<OrderLine> orderLines = new ArrayList<>();
+          order.setOrderLines(orderLines);
+        }
+        OrderLine orderLine = new OrderLine();
+        orderLine.setQuantity(rs.getInt(11));
+        orderLine.setProductCode(rs.getString(12));
+        orderLine.setProductName(rs.getString(13));
+        orderLine.setProductSize(rs.getInt(14));
+        orderLine.setProductVariety(rs.getString(15));
+        orderLine.setProductPrice(rs.getFloat(16));
+        order.getOrderLines().add(orderLine);
+      }
+    } catch (SQLException e) {
+      logger.error("Prepared Statement or SQL execution with result set had issues.", e);
+    }
+    return orders;
   }
 }

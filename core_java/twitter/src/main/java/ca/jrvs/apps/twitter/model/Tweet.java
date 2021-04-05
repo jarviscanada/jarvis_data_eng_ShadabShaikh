@@ -45,6 +45,7 @@ public class Tweet {
   public String getCreated_at() {
     return created_at;
   }
+
   @JsonProperty("created_at")
   public void setCreated_at(String created_at) {
     this.created_at = created_at;
@@ -89,6 +90,7 @@ public class Tweet {
   public void setEntities(Entities entities) {
     this.entities = entities;
   }
+
   @JsonProperty("coordinates")
   public Coordinates getCoordinates() {
     return coordinates;

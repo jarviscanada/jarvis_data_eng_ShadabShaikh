@@ -30,7 +30,6 @@ public class TwitterDaoUnitTest {
   @InjectMocks
   TwitterDao dao;
 
-
   //Make sample tweet JSON
   String tweetJson = "{\n"
       + "\"created_at\":\"Fri Apr 02 23:16:09 +0000 2021\",\n"

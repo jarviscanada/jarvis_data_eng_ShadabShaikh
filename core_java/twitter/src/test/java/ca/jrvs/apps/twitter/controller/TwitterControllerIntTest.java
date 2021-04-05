@@ -17,10 +17,8 @@ import org.junit.Test;
 
 public class TwitterControllerIntTest {
 
-  /*private Controller controller;
-  private Service service;
-  private CrdDao dao;*/
   private TwitterService service;
+  private TwitterController controller;
 
   @Before
   public void setUp() throws Exception {
@@ -34,14 +32,13 @@ public class TwitterControllerIntTest {
         tokenSecret);
     //pass dependency
     TwitterDao dao = new TwitterDao(httpHelper);
-    this.service = new TwitterService(dao);
-    //TwitterController controller = new TwitterController(this.service);
+    service = new TwitterService(dao);
+    this.controller = new TwitterController(service);
 
   }
 
   @Test
   public void postTweet() {
-    TwitterController controller = new TwitterController(this.service);
     String hashTag = "#hash";
     String text = "@person2 message here " + hashTag + " " + System.currentTimeMillis();
     String lat = "1";
@@ -65,8 +62,7 @@ public class TwitterControllerIntTest {
 
   @Test
   public void showTweet() {
-    TwitterController controller = new TwitterController(this.service);
-    String id_str = "1378130003074895872";
+    String id_str = "1378124119712096258";
     String[] args = {"show", id_str};
     Tweet findTweet = controller.showTweet(args);
 
@@ -81,15 +77,14 @@ public class TwitterControllerIntTest {
 
   @Test
   public void deleteTweet() {
-    TwitterController controller = new TwitterController(this.service);
-    String deleteID1 = "1378173240481304587";
-    String deleteID2 = "1378130003074895872";
+    String deleteID1 = "1379084976608702475";
+    String deleteID2 = "1378935246301892613";
     String[] deleteIDs = {"delete", deleteID1 + "," + deleteID2};
     List<Tweet> tweets = controller.deleteTweet(deleteIDs);
 
     Tweet deletedTweet1 = tweets.get(0);
     Tweet deletedTweet2 = tweets.get(1);
     assertEquals(deleteID1, deletedTweet1.getId_str());
-    assertEquals(1f, deletedTweet2.getCoordinates().getCoordinates()[1], 0.01);
+    assertEquals(1f, deletedTweet2.getCoordinates().getCoordinates()[0], 0.01);
   }
 }

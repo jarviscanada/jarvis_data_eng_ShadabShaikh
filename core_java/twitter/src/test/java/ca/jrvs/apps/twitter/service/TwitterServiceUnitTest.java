@@ -28,7 +28,7 @@ public class TwitterServiceUnitTest {
 
   @Test
   public void postTweet() {
-    when(dao.create(any())).thenReturn(TweetBuilder.buildTweet("Weclome", 18f, 32f));
+    when(dao.create(any())).thenReturn(TweetBuilder.buildTweet("Welcome", 18f, 32f));
 
     try {
       service.postTweet(TweetBuilder.buildTweet("bad tweet", 188f, 321f));

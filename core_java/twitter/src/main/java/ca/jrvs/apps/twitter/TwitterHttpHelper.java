@@ -1,7 +1,6 @@
 package ca.jrvs.apps.twitter;
 
 import ca.jrvs.apps.twitter.dao.helper.HttpHelper;
-import com.google.gdata.util.common.base.PercentEscaper;
 import java.io.IOException;
 import java.net.URI;
 import oauth.signpost.OAuthConsumer;
@@ -10,22 +9,21 @@ import oauth.signpost.exception.OAuthCommunicationException;
 import oauth.signpost.exception.OAuthExpectationFailedException;
 import oauth.signpost.exception.OAuthMessageSignerException;
 import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.client.HttpClient;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class TwitterHttpHelper implements HttpHelper {
 
-  private OAuthConsumer consumer;
-  private HttpClient httpClient;
   final Logger logger = LoggerFactory.getLogger(TwitterHttpHelper.class);
+  private final OAuthConsumer consumer;
+  private final HttpClient httpClient;
 
-  public TwitterHttpHelper(String consumerKey, String consumerSecret, String accessToken, String tokenSecret) {
+  public TwitterHttpHelper(String consumerKey, String consumerSecret, String accessToken,
+      String tokenSecret) {
     consumer = new CommonsHttpOAuthConsumer(consumerKey, consumerSecret);
     consumer.setTokenWithSecret(accessToken, tokenSecret);
 

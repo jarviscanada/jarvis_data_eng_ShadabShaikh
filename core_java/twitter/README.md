@@ -65,6 +65,8 @@ $ twitter show tweet_id [field_to_filter, field_to_filter2]`
 # Design
 ## UML diagram
 
+![UML](assets/TwitterUML.png)
+
 The project applies the MVC design pattern with different layers represented by the classes. There is the Controller layer, Service layer and Data Access Object (DAO) layer. There is also an Application layer that interfaces between the CLI and the other components. The components include:
 
 ### TwitterCLIApp

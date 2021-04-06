@@ -24,25 +24,6 @@ public class TwitterCLIApp {
     this.controller = controller;
   }
 
-  public static void main(String[] args) {
-    //set up environment variables to be passed for auth
-    String consumerKey = System.getenv("consumerKey");
-    String consumerSecret = System.getenv("consumerSecret");
-    String accessToken = System.getenv("accessToken");
-    String tokenSecret = System.getenv("tokenSecret");
-    System.out.println(consumerKey + "|" + consumerSecret + "|" + accessToken + "|" + tokenSecret);
-    //set up and pass dependencies
-    HttpHelper httpHelper = new TwitterHttpHelper(consumerKey, consumerSecret, accessToken,
-        tokenSecret);
-    CrdDao dao = new TwitterDao(httpHelper);
-    Service service = new TwitterService(dao);
-    Controller controller = new TwitterController(service);
-    TwitterCLIApp app = new TwitterCLIApp(controller);
-    //Pass arguments to runApp
-    app.runApp(args);
-
-  }
-
   public void runApp(String[] args) {
     if (args.length == 0) {
       throw new IllegalArgumentException(USAGE);

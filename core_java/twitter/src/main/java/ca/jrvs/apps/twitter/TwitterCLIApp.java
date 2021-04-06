@@ -10,33 +10,18 @@ import ca.jrvs.apps.twitter.service.Service;
 import ca.jrvs.apps.twitter.service.TwitterService;
 import ca.jrvs.apps.twitter.util.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class TwitterCLIApp {
 
   private static final String USAGE = "USAGE: TwitterCLIApp post|show|delete [options]";
   private final Controller controller;
 
+  @Autowired
   public TwitterCLIApp(Controller controller) {
     this.controller = controller;
-  }
-
-  public static void main(String[] args) {
-    //set up environment variables to be passed for auth
-    String consumerKey = System.getenv("consumerKey");
-    String consumerSecret = System.getenv("consumerSecret");
-    String accessToken = System.getenv("accessToken");
-    String tokenSecret = System.getenv("tokenSecret");
-    System.out.println(consumerKey + "|" + consumerSecret + "|" + accessToken + "|" + tokenSecret);
-    //set up and pass dependencies
-    HttpHelper httpHelper = new TwitterHttpHelper(consumerKey, consumerSecret, accessToken,
-        tokenSecret);
-    CrdDao dao = new TwitterDao(httpHelper);
-    Service service = new TwitterService(dao);
-    Controller controller = new TwitterController(service);
-    TwitterCLIApp app = new TwitterCLIApp(controller);
-    //Pass arguments to runApp
-    app.runApp(args);
-
   }
 
   public void runApp(String[] args) {

@@ -24,11 +24,41 @@ public class TwoSumTest {
     int[] testArray2 = {14, 6, 3, 8, 11, 20, 4};
 
     int[] Array1 = {0, 1};
-    int[] Array2 = {0, 5};
+    int[] Array2 = {3, 4};
 
 
     assertArrayEquals(Array1, twoSumObj.twoSum(testArray1, 9));
     assertArrayEquals(Array2, twoSumObj.twoSum(testArray2, 19));
+
+  }
+
+  @Test
+  public void twoSumSort() {
+
+    int[] testArray1 = {2, 7, 12, 15};
+    int[] testArray2 = {14, 6, 3, 8, 11, 20, 4};
+
+    int[] Array1 = {0, 1};
+    int[] Array2 = {3, 4};
+
+
+    assertArrayEquals(Array1, twoSumObj.twoSumSort(testArray1, 9));
+    assertArrayEquals(Array2, twoSumObj.twoSumSort(testArray2, 19));
+
+  }
+
+  @Test
+  public void twoSumHash() {
+
+    int[] testArray1 = {2, 7, 12, 15};
+    int[] testArray2 = {14, 6, 3, 8, 11, 20, 4};
+
+    int[] Array1 = {0, 1};
+    int[] Array2 = {3, 4};
+
+
+    assertArrayEquals(Array1, twoSumObj.twoSumHash(testArray1, 9));
+    assertArrayEquals(Array2, twoSumObj.twoSumHash(testArray2, 19));
 
   }
 

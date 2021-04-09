@@ -18,7 +18,7 @@ public class TwoSum {
     for (int i = 0; i < nums.length; i++) {
       for (int j = 0; j < nums.length; j++) {
         sum = nums[i] + nums[j];
-        if (sum == target) {
+        if (sum == target && i != j) {
           return new int[]{i, j};
         }
       }
@@ -48,7 +48,7 @@ public class TwoSum {
         j--;
       }
     }
-    return null;
+    throw new IllegalArgumentException("There is no two sum solution in the array.");
   }
 
   /**

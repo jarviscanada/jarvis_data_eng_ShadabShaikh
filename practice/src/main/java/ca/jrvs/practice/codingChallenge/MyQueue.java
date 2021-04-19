@@ -2,8 +2,7 @@ package ca.jrvs.practice.codingChallenge;
 
 /**
  * https://www.notion.so/jarvisdev/Implement-Queue-using-Stacks-21ac2aea43744899959d887f9681f21c
- * Implements a queue using two stacks
- * Approach 1: O(n) per push
+ * Implements a queue using two stacks Approach 1: O(n) per push
  */
 
 import java.util.Stack;
@@ -15,7 +14,7 @@ public class MyQueue {
   private int front;
 
   public void push(int x) {
-    if(stack1.empty()){
+    if (stack1.empty()) {
       front = x;
     }
     while (!stack1.isEmpty()) {
@@ -29,8 +28,9 @@ public class MyQueue {
 
   public int pop() {
     stack1.pop();
-    if (!stack1.empty())
-     front = stack1.peek();
+    if (!stack1.empty()) {
+      front = stack1.peek();
+    }
     return front;
   }
 
@@ -48,16 +48,18 @@ public class MyQueue {
    * @param x
    */
 
-  public void push2(int x){
-    if (stack1.empty())
+  public void push2(int x) {
+    if (stack1.empty()) {
       front = x;
+    }
     stack1.push(x);
   }
 
-  public void pop2(){
+  public void pop2() {
     if (stack2.isEmpty()) {
-      while (!stack1.isEmpty())
+      while (!stack1.isEmpty()) {
         stack2.push(stack1.pop());
+      }
     }
     stack2.pop();
   }
@@ -69,7 +71,7 @@ public class MyQueue {
     return front;
   }
 
-  public boolean empty2(){
+  public boolean empty2() {
     return stack1.isEmpty();
   }
 }

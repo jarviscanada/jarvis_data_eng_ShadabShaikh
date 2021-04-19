@@ -6,9 +6,8 @@ import java.util.Map;
 
 /**
  * Returns the index values of two numbers in an array that add up to the target sum.
- * https://www.notion.so/jarviscanada/Two-Sum-a2ca50b965f94256b17c2b377f3be1b4
- * Big O notation: O(n^2) time to go through the array twice cross-checking with each value.
- *
+ * https://www.notion.so/jarviscanada/Two-Sum-a2ca50b965f94256b17c2b377f3be1b4 Big O notation:
+ * O(n^2) time to go through the array twice cross-checking with each value.
  */
 
 public class TwoSum {
@@ -27,9 +26,8 @@ public class TwoSum {
   }
 
   /**
-   * Approach 2: Sorted
-   * Big O notation: O(n + nlogn) to sort and then iterate through the loop once.
-   *
+   * Approach 2: Sorted Big O notation: O(n + nlogn) to sort and then iterate through the loop
+   * once.
    */
 
   public static int[] twoSumSort(int[] nums, int target) {
@@ -41,7 +39,7 @@ public class TwoSum {
     while (i < j) {
       int sum = nums[i] + nums[j];
       if (sum == target) {
-        return new int[] {i, j};
+        return new int[]{i, j};
       } else if (sum < target) {
         i++;
       } else {
@@ -52,17 +50,16 @@ public class TwoSum {
   }
 
   /**
-   * Approach 3: HashMap
-   * Big O notation: O(n). The array is stored in a map in O(n) space and iterate through the array while mapping.
-   *
+   * Approach 3: HashMap Big O notation: O(n). The array is stored in a map in O(n) space and
+   * iterate through the array while mapping.
    */
 
   public static int[] twoSumHash(int[] nums, int target) {
     Map<Integer, Integer> map = new HashMap<>();
-    for (int i = 0; i < nums.length; i++){
+    for (int i = 0; i < nums.length; i++) {
       int numPair = target - nums[i];
-      if (map.containsKey(numPair)){
-        return new int[] {map.get(numPair), i};
+      if (map.containsKey(numPair)) {
+        return new int[]{map.get(numPair), i};
       }
       map.put(nums[i], i);
     }

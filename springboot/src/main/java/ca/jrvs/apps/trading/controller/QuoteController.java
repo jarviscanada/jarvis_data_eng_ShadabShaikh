@@ -2,6 +2,7 @@ package ca.jrvs.apps.trading.controller;
 
 import ca.jrvs.apps.trading.model.domain.IexQuote;
 import ca.jrvs.apps.trading.service.QuoteService;
+import java.util.Locale;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -28,7 +29,7 @@ public class QuoteController {
   @ResponseBody
   public IexQuote getQuote(@PathVariable String ticker) {
     try{
-      return quoteService.findIexQuoteByTicker(ticker);
+      return quoteService.findIexQuoteByTicker(ticker.toUpperCase());
     } catch (Exception e) {
       throw ResponseExceptionUtil.getResponseStatusException(e);
     }

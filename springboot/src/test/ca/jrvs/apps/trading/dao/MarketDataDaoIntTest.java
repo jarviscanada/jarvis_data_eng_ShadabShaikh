@@ -2,7 +2,7 @@ package ca.jrvs.apps.trading.dao;
 
 import static org.junit.Assert.*;
 
-import ca.jrvs.apps.trading.MarketDataDao;
+import ca.jrvs.apps.trading.dao.MarketDataDao;
 import ca.jrvs.apps.trading.model.config.MarketDataConfig;
 import ca.jrvs.apps.trading.model.domain.IexQuote;
 import java.util.Arrays;

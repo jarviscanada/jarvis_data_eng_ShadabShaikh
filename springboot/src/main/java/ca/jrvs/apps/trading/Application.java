@@ -16,10 +16,10 @@ import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfigurat
     DataSourceAutoConfiguration.class, HibernateJpaAutoConfiguration.class})
 public class Application implements CommandLineRunner {
 
-  private Logger logger = LoggerFactory.getLogger(Application.class);
+  private final Logger logger = LoggerFactory.getLogger(Application.class);
 
-  @Value("${app.init.dailyList}")
-  private String[] initDailyList;
+  /*@Value("${app.init.dailyList}")
+  private String[] initDailyList;*/
 
   @Autowired
   private QuoteService quoteService;

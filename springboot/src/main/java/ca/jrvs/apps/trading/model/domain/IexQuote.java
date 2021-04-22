@@ -94,13 +94,13 @@ public class IexQuote {
   @JsonProperty("high")
   private Double high;
   @JsonProperty("highTime")
-  private Integer highTime;
+  private Long highTime;
   @JsonProperty("highSource")
   private String highSource;
   @JsonProperty("low")
   private Double low;
   @JsonProperty("lowTime")
-  private Integer lowTime;
+  private Long lowTime;
   @JsonProperty("lowSource")
   private String lowSource;
   @JsonProperty("latestPrice")
@@ -295,12 +295,12 @@ public class IexQuote {
   }
 
   @JsonProperty("highTime")
-  public Integer getHighTime() {
+  public Long getHighTime() {
     return highTime;
   }
 
   @JsonProperty("highTime")
-  public void setHighTime(Integer highTime) {
+  public void setHighTime(Long highTime) {
     this.highTime = highTime;
   }
 
@@ -325,12 +325,12 @@ public class IexQuote {
   }
 
   @JsonProperty("lowTime")
-  public Integer getLowTime() {
+  public Long getLowTime() {
     return lowTime;
   }
 
   @JsonProperty("lowTime")
-  public void setLowTime(Integer lowTime) {
+  public void setLowTime(Long lowTime) {
     this.lowTime = lowTime;
   }
 

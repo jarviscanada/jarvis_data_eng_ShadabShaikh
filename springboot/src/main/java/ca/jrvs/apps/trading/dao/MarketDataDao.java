@@ -1,4 +1,4 @@
-package ca.jrvs.apps.trading;
+package ca.jrvs.apps.trading.dao;
 
 import ca.jrvs.apps.trading.model.config.MarketDataConfig;
 import ca.jrvs.apps.trading.model.domain.IexQuote;

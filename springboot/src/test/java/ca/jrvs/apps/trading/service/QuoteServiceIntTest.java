@@ -58,8 +58,12 @@ public class QuoteServiceIntTest {
 
   @Test
   public void updateMarketData() {
+    List<Quote> updated = new ArrayList<>();
     //Alter price and test if updateMarketData modifies them
-    quoteService.updateMarketData();
+    savedQuote.setBidPrice(-50.2);
+    quoteDao.save(savedQuote);
+    updated = quoteService.updateMarketData();
+    assertNotEquals(-50.2,updated.get(0).getBidPrice());
   }
 
   @Test

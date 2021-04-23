@@ -118,7 +118,7 @@ public class QuoteDao implements CrudRepository<Quote, String> {
   }
 
   @Override
-  public Iterable<Quote> findAllById(Iterable<String> iterable) {
+  public Iterable<Quote> findAllById(Iterable<String> tickers) {
     throw new UnsupportedOperationException("Not implemented");
   }
 

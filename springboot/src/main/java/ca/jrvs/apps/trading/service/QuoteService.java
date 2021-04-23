@@ -38,19 +38,21 @@ public class QuoteService {
    * @throws IllegalArgumentException                    for invalid input
    */
 
-  public void updateMarketData() {
+  public List<Quote> updateMarketData() {
     List<Quote> dbQuotes = findAllQuotes();
+    List<Quote> updatedQuotes = new ArrayList<>();
     try {
       dbQuotes.stream().forEach(q -> {
         IexQuote iexQuote = marketDataDao.findById(q.getId()).get();
         Quote convertedQuote = buildQuotefromIexQuote(iexQuote);
-        quoteDao.save(convertedQuote);
+        updatedQuotes.add(quoteDao.save(convertedQuote));
       });
     } catch (IllegalArgumentException e) {
       throw ResponseExceptionUtil.getResponseStatusException(e);
     } catch (DataRetrievalFailureException e) {
       throw new InvalidDataAccessResourceUsageException("Cannot retrieve data.");
     }
+    return updatedQuotes;
   }
 
   /**
@@ -75,7 +77,7 @@ public class QuoteService {
    * Get iexQuotes Convert each iexQuote to Quote entity persist the quote to db
    *
    * @param tickers
-   * @return
+   * @return List of saved tickers
    * @throws IllegalArgumentException if ticker is not found from IEX
    */
 

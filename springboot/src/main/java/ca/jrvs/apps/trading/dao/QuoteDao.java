@@ -62,7 +62,7 @@ public class QuoteDao implements CrudRepository<Quote, String> {
 
   //Helper method to update one quote
   private int updateOne(Quote quote) {
-    String update_sql = "UPDATE quote SET last_price=?, bid_price=?, bid_size=?, ask_size=? WHERE"
+    String update_sql = "UPDATE quote SET last_price=?, bid_price=?, bid_size=?,ask_price=?, ask_size=? WHERE "
         + "ticker=?";
     return jdbcTemplate.update(update_sql, makeUpdateValues(quote));
   }
@@ -74,7 +74,7 @@ public class QuoteDao implements CrudRepository<Quote, String> {
         quote.getBidSize(),
         quote.getAskPrice(),
         quote.getAskSize(),
-        quote.getTicker()};
+        quote.getId()};
     return fields;
   }
 
@@ -91,22 +91,22 @@ public class QuoteDao implements CrudRepository<Quote, String> {
 
   @Override
   public Optional<Quote> findById(String ticker) {
-    String selectSql = "SELECT * FROM " + TABLE_NAME + " WHERE ticker =?";
-    Quote quote =  jdbcTemplate
-        .queryForObject(selectSql,BeanPropertyRowMapper.newInstance(Quote.class), ticker);
-    if(quote ==null) {
-      return Optional.empty();
-    } else {
+    String selectSql = "SELECT * FROM " + TABLE_NAME + " WHERE " + ID_COLUMN_NAME + " =?";
+    try {
+      Quote quote = jdbcTemplate.queryForObject(selectSql, BeanPropertyRowMapper.newInstance(Quote.class), ticker);
       return Optional.of(quote);
+    } catch (IncorrectResultSizeDataAccessException e) {
+      return Optional.empty();
     }
+
   }
 
   @Override
   public boolean existsById(String ticker) {
-    int count = 0;
-    count = jdbcTemplate.queryForObject("SELECT COUNT(*) FROM " + TABLE_NAME
-        + " WHERE ticker =?", Integer.class, ticker);
-    return count != 0;
+    String existSql = "SELECT COUNT(*) FROM " + TABLE_NAME
+        + " WHERE ticker =?";
+    int count = jdbcTemplate.queryForObject(existSql, Integer.class, ticker);
+    return count > 0;
   }
 
   @Override
@@ -124,21 +124,25 @@ public class QuoteDao implements CrudRepository<Quote, String> {
 
   @Override
   public long count() {
-    return 0;
+    String countString = "SELECT COUNT(*) FROM " + TABLE_NAME;
+    Long count = jdbcTemplate.queryForObject(countString, Long.class);
+    if (count == null)
+      throw new NullPointerException("SQL Count Null returned");
+    return count;
   }
 
   @Override
   public void deleteById(String ticker) {
-    if (ticker == null) {
-      throw new IllegalArgumentException("ID can't be null");
+    if (!findById(ticker).isPresent()) {
+      throw new IllegalArgumentException("ID was not found.");
     }
-    String deleteSql = "DELETE FROM " + TABLE_NAME + " WHERE " + ticker + " =?";
+    String deleteSql = "DELETE FROM " + TABLE_NAME + " WHERE ticker =?";
     jdbcTemplate.update(deleteSql, ticker);
   }
 
   @Override
   public void delete(Quote quote) {
-    throw new UnsupportedOperationException("Not implemented");
+    deleteById(quote.getId());
   }
 
   @Override
@@ -148,6 +152,7 @@ public class QuoteDao implements CrudRepository<Quote, String> {
 
   @Override
   public void deleteAll() {
-    throw new UnsupportedOperationException("Not implemented");
+    String deleteSql = "DELETE FROM " + TABLE_NAME;
+    jdbcTemplate.update(deleteSql);
   }
 }

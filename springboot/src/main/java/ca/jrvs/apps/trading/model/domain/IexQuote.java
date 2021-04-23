@@ -122,11 +122,11 @@ public class IexQuote {
   @JsonProperty("delayedPrice")
   private Double delayedPrice;
   @JsonProperty("delayedPriceTime")
-  private Integer delayedPriceTime;
+  private Long delayedPriceTime;
   @JsonProperty("oddLotDelayedPrice")
   private Double oddLotDelayedPrice;
   @JsonProperty("oddLotDelayedPriceTime")
-  private Integer oddLotDelayedPriceTime;
+  private Long oddLotDelayedPriceTime;
   @JsonProperty("extendedPrice")
   private Double extendedPrice;
   @JsonProperty("extendedChange")
@@ -134,7 +134,7 @@ public class IexQuote {
   @JsonProperty("extendedChangePercent")
   private Double extendedChangePercent;
   @JsonProperty("extendedPriceTime")
-  private Integer extendedPriceTime;
+  private Long extendedPriceTime;
   @JsonProperty("previousClose")
   private Double previousClose;
   @JsonProperty("previousVolume")
@@ -435,12 +435,12 @@ public class IexQuote {
   }
 
   @JsonProperty("delayedPriceTime")
-  public Integer getDelayedPriceTime() {
+  public Long getDelayedPriceTime() {
     return delayedPriceTime;
   }
 
   @JsonProperty("delayedPriceTime")
-  public void setDelayedPriceTime(Integer delayedPriceTime) {
+  public void setDelayedPriceTime(Long delayedPriceTime) {
     this.delayedPriceTime = delayedPriceTime;
   }
 
@@ -455,12 +455,12 @@ public class IexQuote {
   }
 
   @JsonProperty("oddLotDelayedPriceTime")
-  public Integer getOddLotDelayedPriceTime() {
+  public Long getOddLotDelayedPriceTime() {
     return oddLotDelayedPriceTime;
   }
 
   @JsonProperty("oddLotDelayedPriceTime")
-  public void setOddLotDelayedPriceTime(Integer oddLotDelayedPriceTime) {
+  public void setOddLotDelayedPriceTime(Long oddLotDelayedPriceTime) {
     this.oddLotDelayedPriceTime = oddLotDelayedPriceTime;
   }
 
@@ -495,12 +495,12 @@ public class IexQuote {
   }
 
   @JsonProperty("extendedPriceTime")
-  public Integer getExtendedPriceTime() {
+  public Long getExtendedPriceTime() {
     return extendedPriceTime;
   }
 
   @JsonProperty("extendedPriceTime")
-  public void setExtendedPriceTime(Integer extendedPriceTime) {
+  public void setExtendedPriceTime(Long extendedPriceTime) {
     this.extendedPriceTime = extendedPriceTime;
   }
 
@@ -742,67 +742,5 @@ public class IexQuote {
   @JsonAnySetter
   public void setAdditionalProperty(String name, Object value) {
     this.additionalProperties.put(name, value);
-  }
-
-  @Override
-  public String toString() {
-    return "IexQuote{" +
-        "symbol='" + symbol + '\'' +
-        ", companyName='" + companyName + '\'' +
-        ", primaryExchange='" + primaryExchange + '\'' +
-        ", calculationPrice='" + calculationPrice + '\'' +
-        ", open=" + open +
-        ", openTime=" + openTime +
-        ", openSource='" + openSource + '\'' +
-        ", close=" + close +
-        ", closeTime=" + closeTime +
-        ", closeSource='" + closeSource + '\'' +
-        ", high=" + high +
-        ", highTime=" + highTime +
-        ", highSource='" + highSource + '\'' +
-        ", low=" + low +
-        ", lowTime=" + lowTime +
-        ", lowSource='" + lowSource + '\'' +
-        ", latestPrice=" + latestPrice +
-        ", latestSource='" + latestSource + '\'' +
-        ", latestTime='" + latestTime + '\'' +
-        ", latestUpdate=" + latestUpdate +
-        ", latestVolume=" + latestVolume +
-        ", iexRealtimePrice=" + iexRealtimePrice +
-        ", iexRealtimeSize=" + iexRealtimeSize +
-        ", iexLastUpdated=" + iexLastUpdated +
-        ", delayedPrice=" + delayedPrice +
-        ", delayedPriceTime=" + delayedPriceTime +
-        ", oddLotDelayedPrice=" + oddLotDelayedPrice +
-        ", oddLotDelayedPriceTime=" + oddLotDelayedPriceTime +
-        ", extendedPrice=" + extendedPrice +
-        ", extendedChange=" + extendedChange +
-        ", extendedChangePercent=" + extendedChangePercent +
-        ", extendedPriceTime=" + extendedPriceTime +
-        ", previousClose=" + previousClose +
-        ", previousVolume=" + previousVolume +
-        ", change=" + change +
-        ", changePercent=" + changePercent +
-        ", volume=" + volume +
-        ", iexMarketPercent=" + iexMarketPercent +
-        ", iexVolume=" + iexVolume +
-        ", avgTotalVolume=" + avgTotalVolume +
-        ", iexBidPrice=" + iexBidPrice +
-        ", iexBidSize=" + iexBidSize +
-        ", iexAskPrice=" + iexAskPrice +
-        ", iexAskSize=" + iexAskSize +
-        ", iexOpen=" + iexOpen +
-        ", iexOpenTime=" + iexOpenTime +
-        ", iexClose=" + iexClose +
-        ", iexCloseTime=" + iexCloseTime +
-        ", marketCap=" + marketCap +
-        ", peRatio=" + peRatio +
-        ", week52High=" + week52High +
-        ", week52Low=" + week52Low +
-        ", ytdChange=" + ytdChange +
-        ", lastTradeTime=" + lastTradeTime +
-        ", isUSMarketOpen=" + isUSMarketOpen +
-        ", additionalProperties=" + additionalProperties +
-        '}';
   }
 }

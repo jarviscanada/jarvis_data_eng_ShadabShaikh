@@ -23,6 +23,10 @@ public class Quote implements Entity<String>{
     return ticker;
   }
 
+  public void setTicker(String ticker) {
+    this.ticker = ticker;
+  }
+
   public Double getLastPrice() {
     return lastPrice;
   }
@@ -63,15 +67,4 @@ public class Quote implements Entity<String>{
     this.askSize = askSize;
   }
 
-  @Override
-  public String toString() {
-    return "Quote{" +
-        "ticker='" + ticker + '\'' +
-        ", lastPrice=" + lastPrice +
-        ", bidPrice=" + bidPrice +
-        ", bidSize=" + bidSize +
-        ", askPrice=" + askPrice +
-        ", askSize=" + askSize +
-        '}';
-  }
 }

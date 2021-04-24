@@ -1,8 +1,9 @@
 package ca.jrvs.apps.trading.dao;
 
 import ca.jrvs.apps.trading.model.domain.Entity;
-import ca.jrvs.apps.trading.model.domain.Quote;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 import org.slf4j.Logger;
@@ -42,12 +43,23 @@ public abstract class JdbcCrudDao<T extends Entity<Integer>> implements CrudRepo
     return entity;
   }
 
+  @Override
+  public <S extends T> List<S> saveAll(Iterable<S> iterable) {
+    Iterator<S> saveEntity = iterable.iterator();
+    List<S> returnEntity = new LinkedList<>();
+    while (saveEntity.hasNext()) {
+      returnEntity.add(save(saveEntity.next()));
+    }
+    return returnEntity;
+  }
+
   /**
    * Helper method that saves one quote
+   *
    * @param entity
    * @param <S>
    */
-  private <S extends T> void addOne(S entity){
+  private <S extends T> void addOne(S entity) {
     SqlParameterSource parameterSource = new BeanPropertySqlParameterSource(entity);
 
     Number newId = getSimpleJdbcInsert().executeAndReturnKey(parameterSource);
@@ -62,7 +74,7 @@ public abstract class JdbcCrudDao<T extends Entity<Integer>> implements CrudRepo
     String selectSql = "SELECT * FROM " + getTableName() + " WHERE " + getIdColumnName() + " =?";
 
     try {
-      entity = Optional.ofNullable((T) getJdbcTemplate().queryForObject(selectSql,
+      entity = Optional.ofNullable(getJdbcTemplate().queryForObject(selectSql,
           BeanPropertyRowMapper.newInstance(getEntityClass()), id));
     } catch (IncorrectResultSizeDataAccessException e) {
       logger.debug("Can't find trader id:" + id, e);
@@ -73,18 +85,25 @@ public abstract class JdbcCrudDao<T extends Entity<Integer>> implements CrudRepo
   @Override
   public boolean existsById(Integer id) {
     String existSql = "SELECT COUNT(*) FROM " + getTableName()
-        + " WHERE ticker =?";
+        + " WHERE " + getIdColumnName() + " =?";
     int count = getJdbcTemplate().queryForObject(existSql, Integer.class, id);
     return count > 0;
   }
 
   @Override
-  public List<T> findAllById(Iterable<Integer> ids){
-    List<T> foundQuotes = new ArrayList<>();
-        ids.forEach(t -> {
-          foundQuotes.add(findById(t).get());
-        });
-        return foundQuotes;
+  public List<T> findAllById(Iterable<Integer> ids) {
+    List<T> foundEntities = new ArrayList<>();
+    ids.forEach(t -> {
+      foundEntities.add(findById(t).get());
+    });
+    return foundEntities;
+  }
+
+  public Iterable<T> findAll() {
+    String selectSql = "SELECT * FROM " + getTableName();
+    List<T> entities = getJdbcTemplate()
+        .query(selectSql, BeanPropertyRowMapper.newInstance(getEntityClass()));
+    return entities;
   }
 
   @Override
@@ -92,7 +111,7 @@ public abstract class JdbcCrudDao<T extends Entity<Integer>> implements CrudRepo
     if (!existsById(id)) {
       throw new IllegalArgumentException("ID was not found.");
     }
-    String deleteSql = "DELETE FROM " + getTableName() + " WHERE " + id + " =?";
+    String deleteSql = "DELETE FROM " + getTableName() + " WHERE " + getIdColumnName() + " =?";
     getJdbcTemplate().update(deleteSql, id);
   }
 
@@ -100,8 +119,9 @@ public abstract class JdbcCrudDao<T extends Entity<Integer>> implements CrudRepo
   public long count() {
     String countString = "SELECT COUNT(*) FROM " + getTableName();
     Long count = getJdbcTemplate().queryForObject(countString, Long.class);
-    if (count == null)
+    if (count == null) {
       throw new NullPointerException("SQL Count Null returned");
+    }
     return count;
   }
 

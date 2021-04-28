@@ -1,9 +1,9 @@
 package ca.jrvs.practice.codingChallenge;
 
 /**
- * https://www.notion.so/jarvisdev/String-to-Integer-atoi-357472032eb848deb154c1b87e7cd2b6
- * Converts string to int manually using the numeric value extracted from the string
- * Time complexity: O(n) worst case. n are the number of characters in the String.
+ * https://www.notion.so/jarvisdev/String-to-Integer-atoi-357472032eb848deb154c1b87e7cd2b6 Converts
+ * string to int manually using the numeric value extracted from the string Time complexity: O(n)
+ * worst case. n are the number of characters in the String.
  */
 
 public class StringToInt {

@@ -47,13 +47,6 @@ public class AppConfig {
     return basicDataSource;
   }
 
-
- /* @Bean
-  public QuoteController quoteController(QuoteService quoteService) {return new QuoteController(quoteService);}
-
-  @Bean
-  public QuoteService quoteService(QuoteDao quoteDao, MarketDataDao marketDataDao) {return new QuoteService(quoteDao,marketDataDao);}*/
-
   @Bean
   public HttpClientConnectionManager httpClientConnectionManager() {
     PoolingHttpClientConnectionManager cm = new PoolingHttpClientConnectionManager();

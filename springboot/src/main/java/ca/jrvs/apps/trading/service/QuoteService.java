@@ -7,6 +7,8 @@ import ca.jrvs.apps.trading.model.domain.IexQuote;
 import ca.jrvs.apps.trading.model.domain.Quote;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 import javax.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -56,7 +58,7 @@ public class QuoteService {
   }
 
   /**
-   * Helper method. Map a IexQuote to a Quote entity. NoteL: `iexQuote.getLatestPrice() == null` if
+   * Helper method. Map a IexQuote to a Quote entity. Note: `iexQuote.getLatestPrice() == null` if
    * the stock market is closed. Make sure set a default value for number field(s).
    */
 
@@ -117,7 +119,7 @@ public class QuoteService {
    * Update a given quote to the quote table without validation
    *
    * @param quote entity
-   * @return
+   * @return saved Quote
    */
   public Quote saveQuote(Quote quote) {
     return quoteDao.save(quote);
@@ -126,12 +128,12 @@ public class QuoteService {
   /**
    * Find all quotes from the quote table
    *
-   * @return
+   * @return List of found quotes
    */
   public List<Quote> findAllQuotes() {
-    List<Quote> result = new ArrayList<Quote>();
     Iterable<Quote> iterable = quoteDao.findAll();
-    iterable.forEach(result::add);
+    List<Quote> result = StreamSupport.stream(iterable.spliterator(), false)
+        .collect(Collectors.toList());
     return result;
   }
 }

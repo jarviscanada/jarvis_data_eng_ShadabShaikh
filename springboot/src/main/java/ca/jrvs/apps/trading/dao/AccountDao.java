@@ -1,7 +1,6 @@
 package ca.jrvs.apps.trading.dao;
 
 import ca.jrvs.apps.trading.model.domain.Account;
-import ca.jrvs.apps.trading.model.domain.Trader;
 import javax.sql.DataSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,7 +10,7 @@ import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class AccountDao  extends JdbcCrudDao<Account> {
+public class AccountDao extends JdbcCrudDao<Account> {
 
   private static final Logger logger = LoggerFactory.getLogger(AccountDao.class);
 
@@ -66,7 +65,7 @@ public class AccountDao  extends JdbcCrudDao<Account> {
   @Override
   public int updateOne(Account account) {
     String update_sql = "UPDATE " + getTableName() + " SET trader_id=?, amount=? WHERE "
-        + getIdColumnName() +" =?";
+        + getIdColumnName() + " =?";
     return jdbcTemplate.update(update_sql, makeUpdateValues(account));
   }
 

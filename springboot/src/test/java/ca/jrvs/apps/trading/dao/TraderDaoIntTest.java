@@ -3,11 +3,9 @@ package ca.jrvs.apps.trading.dao;
 import static org.junit.Assert.assertEquals;
 
 import ca.jrvs.apps.trading.TestConfig;
-import ca.jrvs.apps.trading.model.domain.Quote;
 import ca.jrvs.apps.trading.model.domain.Trader;
 import com.google.common.collect.Lists;
 import java.sql.Date;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import org.junit.After;
@@ -59,9 +57,9 @@ public class TraderDaoIntTest {
   public void findAllById() {
     List<Trader> traders = Lists.
         newArrayList(traderDao.findAllById(Collections.singletonList(savedTrader.getId())));
-    assertEquals(1,traders.size());
-    assertEquals(1,traders.get(0).getId().intValue());
-    assertEquals(savedTrader.getCountry(),traders.get(0).getCountry());
+    assertEquals(1, traders.size());
+    assertEquals(1, traders.get(0).getId().intValue());
+    assertEquals(savedTrader.getCountry(), traders.get(0).getCountry());
   }
 
   @Test

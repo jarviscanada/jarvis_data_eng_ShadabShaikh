@@ -1,16 +1,16 @@
 package ca.jrvs.apps.trading.dao;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import ca.jrvs.apps.trading.TestConfig;
 import ca.jrvs.apps.trading.model.domain.Account;
 import ca.jrvs.apps.trading.model.domain.Trader;
 import com.google.common.collect.Lists;
-import io.swagger.models.auth.In;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import org.junit.After;
 import org.junit.Before;
@@ -58,7 +58,6 @@ public class AccountDaoIntTest {
     savedTrader2.setEmail("test2@gmail.com");
     traderDao.save(savedTrader2);
 
-
     savedAccount = new Account();
     savedAccount.setTrader_id(1);
     savedAccount.setAmount(500.20);
@@ -87,6 +86,15 @@ public class AccountDaoIntTest {
   }
 
   @Test
+  public void UpdateOne() {
+    savedAccount.setAmount(550.20);
+    accountDao.updateOne(savedAccount);
+    Account changedAccount = accountDao.findById(savedAccount.getId()).get();
+    assertEquals(savedAccount.getAmount(), changedAccount.getAmount());
+
+  }
+
+  @Test
   public void counterTest() {
     long count = accountDao.count();
     assertEquals(2, count);
@@ -97,6 +105,16 @@ public class AccountDaoIntTest {
     List<Account> allQuotes = (List<Account>) accountDao.findAll();
     assertEquals(savedAccount.getId(), allQuotes.get(0).getId());
     assertEquals(savedAccount2.getId(), allQuotes.get(1).getId());
+  }
+
+  @Test
+  public void delete() {
+    try {
+      accountDao.delete(savedAccount);
+      fail("Not implemented");
+    } catch (Exception e) {
+      assertTrue(true);
+    }
   }
 
   @Test

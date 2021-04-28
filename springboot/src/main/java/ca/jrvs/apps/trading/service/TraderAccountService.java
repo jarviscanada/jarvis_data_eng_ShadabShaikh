@@ -37,10 +37,12 @@ public class TraderAccountService {
       Class clazz = Trader.class;
       for (Field field : clazz.getDeclaredFields())
       {
+        //Access private fields
         field.setAccessible(true);
         if (field.get(trader) == null || field.get(trader).equals(""))
         {
-          return false;
+          if(trader.getId() != null)
+            return false;
         }
       }
     } catch (IllegalAccessException e) {
@@ -165,6 +167,4 @@ public class TraderAccountService {
     accountDao.updateOne(account);
     return account;
   }
-
-
 }

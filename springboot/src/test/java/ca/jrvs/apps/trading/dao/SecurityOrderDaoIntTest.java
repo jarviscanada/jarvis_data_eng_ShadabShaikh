@@ -1,6 +1,6 @@
 package ca.jrvs.apps.trading.dao;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import ca.jrvs.apps.trading.TestConfig;
 import ca.jrvs.apps.trading.model.domain.Account;
@@ -42,7 +42,6 @@ public class SecurityOrderDaoIntTest {
   private Account savedAccount2;
 
   private SecurityOrder savedSecurityOrder;
-  private SecurityOrder savedSecurityOrder2;
 
   private Trader savedTrader;
   private Trader savedTrader2;
@@ -68,7 +67,6 @@ public class SecurityOrderDaoIntTest {
     savedTrader2.setId(2);
     savedTrader2.setEmail("test2@gmail.com");
     traderDao.save(savedTrader2);
-
 
     savedAccount = new Account();
     savedAccount.setTrader_id(1);

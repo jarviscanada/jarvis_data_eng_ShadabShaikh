@@ -1,7 +1,6 @@
 package ca.jrvs.apps.trading.dao;
 
 import ca.jrvs.apps.trading.model.domain.SecurityOrder;
-import ca.jrvs.apps.trading.model.domain.Trader;
 import javax.sql.DataSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,7 +10,7 @@ import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class SecurityOrderDao  extends JdbcCrudDao<SecurityOrder> {
+public class SecurityOrderDao extends JdbcCrudDao<SecurityOrder> {
 
   private static final Logger logger = LoggerFactory.getLogger(SecurityOrder.class);
 

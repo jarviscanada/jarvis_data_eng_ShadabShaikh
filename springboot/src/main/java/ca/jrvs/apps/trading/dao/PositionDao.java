@@ -1,11 +1,9 @@
 package ca.jrvs.apps.trading.dao;
 
 import ca.jrvs.apps.trading.model.domain.Position;
-import ca.jrvs.apps.trading.model.domain.Trader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import javafx.geometry.Pos;
 import javax.sql.DataSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

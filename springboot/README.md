@@ -104,7 +104,6 @@ The Trader controller handles creation and deletion of trader accounts along wit
 - **PUT** `trader/withdraw/traderId/{traderId}/amount/{amount}`: Withdraws funds from the associated trader account.
 
 # Test 
-How did you test your application? Did you use any testing libraries? What's the code coverage?
 The application was tested at every layer (Repository, Service, Controller) using integration testing, API calls and UI interaction. Testing was implemented with high regard to line coverage (>80%) to evaluate working behaviour.
 
 # Deployment

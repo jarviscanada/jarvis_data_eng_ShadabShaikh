@@ -66,7 +66,9 @@ API calls can also be executed using your favourite API software (ex. Postman)
 (screenshot)
 
 # Implementation
-## Architecture
+## Architecture    
+![Architecture](assets/springbootapp_diagram.png)    
+
 The trading application implements the MVC design pattern which separates out the components on their respective layers and keeps consistent with the microservice architecture. The client makes a REST HTTP request which is handled with Apache Tomcat which sends the request to the intended endpoint controller class which processes the request. Since the application employs RESTful API it can be consumed by clients through web and mobile applications.
 
 ### Controller Layer
@@ -106,7 +108,8 @@ The Trader controller handles creation and deletion of trader accounts along wit
 # Test 
 The application was tested at every layer (Repository, Service, Controller) using integration testing, API calls and UI interaction. Testing was implemented with high regard to line coverage (>80%) to evaluate working behaviour.
 
-# Deployment
+# Deployment    
+![Docker](assets/springboot_dockerDeploy.png)    
 The Docker daemon listens for docker requests and manages the images, containers and networks. The docker CLI commands are used to make build the images, run the containers and create the network. When the docker containers are built, the psql database is initialized with the schema.sql for the relevant tables. Docker run makes the containers from the images with the user database parameters and they are connected using the trading-net network.
 
 # Improvements

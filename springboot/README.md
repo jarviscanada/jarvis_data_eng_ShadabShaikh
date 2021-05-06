@@ -63,7 +63,8 @@ docker ps
 #### Open application with Swagger by visiting  http://localhost:8080/swagger-ui.html in a browser
 API calls can also be executed using your favourite API software (ex. Postman)
 
-(screenshot)
+![swaggerScreenshot](assets/Application_screenshot.png)  
+
 
 # Implementation
 ## Architecture    

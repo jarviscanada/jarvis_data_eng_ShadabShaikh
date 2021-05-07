@@ -23,7 +23,7 @@ Project source code: [https://github.com/jarviscanada/jarvis_data_eng_ShadabShai
 
 **Cluster Monitoring Agent** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_ShadabShaikh/tree/master/linux_sql)]: Developed a Linux cluster monitoring tool in CentOS that monitors hardware and resources of network-connected machines and relays the data to a PostgreSQL database. Used docker to deploy the bash scripts that create the RDBMS database, parse the data, and populate the tables. The application provides important data to the infrastructure team to generate reports for node failure detection and future resource planning purposes.
 
-**Springboot App** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_ShadabShaikh/tree/master/springboot)]: To be implemented.
+**Springboot Trading App** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_ShadabShaikh/tree/master/springboot)]: Built a trading platform that applies microservice architecture to replace a legacy system using monolithic architecture. This application manages clients and accounts and facilitates online stock trading and is presented as a proof of concept to the Jarvis trading team. Project utilizes Springboot for dependency injection, JDBC for postgres RDBMS connection, Apache Tomcat to implement Java Servlet and Swagger UI for front-end interaction.
 
 **Python Data Analytics** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_ShadabShaikh/tree/master/python_data_anlytics)]: To be implemented.
 

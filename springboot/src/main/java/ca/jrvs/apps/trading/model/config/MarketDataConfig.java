@@ -1,5 +1,9 @@
 package ca.jrvs.apps.trading.model.config;
 
+/**
+ * Config for IEX connection.
+ */
+
 public class MarketDataConfig {
   private String host;
   private String token;

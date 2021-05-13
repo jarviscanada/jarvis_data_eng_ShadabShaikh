@@ -2,9 +2,9 @@ package ca.jrvs.apps.trading.model.domain;
 
 public class Account implements Entity<Integer> {
 
-  private int id;
+  private Integer id;
   private int trader_id;
-  private float amount;
+  private Double amount;
 
   @Override
   public Integer getId() {
@@ -24,11 +24,11 @@ public class Account implements Entity<Integer> {
     this.trader_id = trader_id;
   }
 
-  public float getAmount() {
+  public Double getAmount() {
     return amount;
   }
 
-  public void setAmount(float amount) {
+  public void setAmount(Double amount) {
     this.amount = amount;
   }
 

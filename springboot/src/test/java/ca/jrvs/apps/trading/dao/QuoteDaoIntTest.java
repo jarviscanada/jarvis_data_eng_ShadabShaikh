@@ -1,13 +1,13 @@
 package ca.jrvs.apps.trading.dao;
 
-import static org.junit.Assert.*;
 import static org.assertj.core.api.Assertions.assertThat;
-import ca.jrvs.apps.trading.dao.QuoteDao;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+
 import ca.jrvs.apps.trading.TestConfig;
 import ca.jrvs.apps.trading.model.domain.Quote;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Iterator;
 import java.util.List;
 import org.junit.After;
 import org.junit.Before;
@@ -74,7 +74,7 @@ public class QuoteDaoIntTest {
 
     savedQuote.setBidPrice(11.2d);
     quoteDao.save(savedQuote);
-    assertEquals(savedQuote.getBidPrice(),quoteDao.findById("AAPL").get().getBidPrice());
+    assertEquals(savedQuote.getBidPrice(), quoteDao.findById("AAPL").get().getBidPrice());
 
     quoteDao.saveAll(Arrays.asList(savedQuote, savedQuote, savedQuote3));
 

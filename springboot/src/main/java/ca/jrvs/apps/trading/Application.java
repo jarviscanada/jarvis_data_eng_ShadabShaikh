@@ -11,6 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.autoconfigure.jdbc.JdbcTemplateAutoConfiguration;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication(exclude = {JdbcTemplateAutoConfiguration.class,
     DataSourceAutoConfiguration.class, HibernateJpaAutoConfiguration.class})
@@ -18,7 +19,7 @@ public class Application implements CommandLineRunner {
 
   private final Logger logger = LoggerFactory.getLogger(Application.class);
 
-  /*@Value("${app.init.dailyList}")
+ /* @Value("${app.init.dailyList}")
   private String[] initDailyList;*/
 
   @Autowired

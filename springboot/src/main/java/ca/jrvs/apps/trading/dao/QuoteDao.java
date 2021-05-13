@@ -1,8 +1,6 @@
 package ca.jrvs.apps.trading.dao;
 
 import ca.jrvs.apps.trading.model.domain.Quote;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -62,8 +60,9 @@ public class QuoteDao implements CrudRepository<Quote, String> {
 
   //Helper method to update one quote
   private int updateOne(Quote quote) {
-    String update_sql = "UPDATE quote SET last_price=?, bid_price=?, bid_size=?,ask_price=?, ask_size=? WHERE "
-        + "ticker=?";
+    String update_sql =
+        "UPDATE quote SET last_price=?, bid_price=?, bid_size=?,ask_price=?, ask_size=? WHERE "
+            + "ticker=?";
     return jdbcTemplate.update(update_sql, makeUpdateValues(quote));
   }
 
@@ -83,7 +82,7 @@ public class QuoteDao implements CrudRepository<Quote, String> {
   public <S extends Quote> List<S> saveAll(Iterable<S> quotes) {
     Iterator<S> saveQuotes = quotes.iterator();
     List<S> quoteList = new LinkedList<>();
-    while(saveQuotes.hasNext()) {
+    while (saveQuotes.hasNext()) {
       quoteList.add((S) save(saveQuotes.next()));
     }
     return quoteList;
@@ -93,9 +92,11 @@ public class QuoteDao implements CrudRepository<Quote, String> {
   public Optional<Quote> findById(String ticker) {
     String selectSql = "SELECT * FROM " + TABLE_NAME + " WHERE " + ID_COLUMN_NAME + " =?";
     try {
-      Quote quote = jdbcTemplate.queryForObject(selectSql, BeanPropertyRowMapper.newInstance(Quote.class), ticker);
+      Quote quote = jdbcTemplate
+          .queryForObject(selectSql, BeanPropertyRowMapper.newInstance(Quote.class), ticker);
       return Optional.of(quote);
     } catch (IncorrectResultSizeDataAccessException e) {
+      logger.debug("Result size of SQL query was not as expected.", e);
       return Optional.empty();
     }
 
@@ -112,7 +113,7 @@ public class QuoteDao implements CrudRepository<Quote, String> {
   @Override
   public Iterable<Quote> findAll() {
     String selectSql = "SELECT * FROM " + TABLE_NAME;
-    List<Quote> quotes =  jdbcTemplate
+    List<Quote> quotes = jdbcTemplate
         .query(selectSql, BeanPropertyRowMapper.newInstance(Quote.class));
     return quotes;
   }
@@ -126,8 +127,9 @@ public class QuoteDao implements CrudRepository<Quote, String> {
   public long count() {
     String countString = "SELECT COUNT(*) FROM " + TABLE_NAME;
     Long count = jdbcTemplate.queryForObject(countString, Long.class);
-    if (count == null)
+    if (count == null) {
       throw new NullPointerException("SQL Count Null returned");
+    }
     return count;
   }
 

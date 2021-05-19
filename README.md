@@ -1,12 +1,12 @@
 # Shadab Shaikh . Jarvis Consulting
 
-I am a detail-oriented computer engineering graduate who is excited to apply my hands-on programming experience to the field. My background involves a heavy analytical mindset with a multitude of personal, professional, and development projects revolving around data engineering. My passion for data and software engineering originates from the core concepts of discovery, insights, and innovation. I have been fascinated by driving informed decisions and delivering the data to make it happen. My interest started early as I was involved in finding the best value for some of the services used in our household. I have applied some of the same methods to my personal projects which include: A Swim management system, and a python loan repayment modeling algorithm that leverages predictive deep learning using kaggle data sets. During my time at Jarvis Consulting, I gained the opportunity to work with Java, SQL, Linux/Bash, REST APIs, Docker, and other industry-leading technologies with real-world applications. I am versed in the Scrum Agile methodology and have diligently carried out my duties as a team lead. With my practical experience and natural curiosity, I look forward to applying my skills to a great team and acquire new opportunities to learn.
+I am a detail-oriented computer engineering graduate who is excited to apply my hands-on programming experience to the field. My background involves a heavy analytical mindset with a multitude of personal, professional, and development projects revolving around data engineering. My passion for data and software engineering originates from the core concepts of discovery, insights, and innovation. I have been fascinated by driving informed decisions and delivering the data to make it happen. My interest started early as I was involved in finding the best value for some of the services used in our household. I have applied some of the same methods to my personal projects which include: A Swim management system, and a python loan repayment modeling algorithm that leverages predictive deep learning using kaggle data sets. During my time at Jarvis Consulting, I gained the opportunity to work with Java, SQL, Linux/Bash, REST APIs, Docker, Python, Pandas and other industry-leading technologies with real-world applications. I am versed in the Scrum Agile methodology and have diligently carried out my duties as a team lead. With my practical experience and natural curiosity, I look forward to applying my skills to a great team and acquire new opportunities to learn.
 
 ## Skills
 
-**Proficient:** Java, Python/Numpy/Pandas/PySpark, RDBMS/SQL, Linux/Bash, Agile/Scrum, Git/GitHub, Docker, Integration/Unit Testing, Data Structures and algorithms
+**Proficient:** Java, Python/Numpy/Pandas, RDBMS/SQL, Linux/Bash, Agile/Scrum, Git/GitHub, Docker, Integration/Unit Testing, Data Structures and algorithms
 
-**Competent:** C, HTML, Matplotlib, EC2 (Amazon Web Services), TensorFlow, Jupyter Notebook, Maven
+**Competent:** C, HTML, Matplotlib, EC2 (Amazon Web Services), TensorFlow, Jupyter Notebook, Maven, PySpark
 
 **Familiar:** Computer Networks, Google Cloud Platform, Hadoop, Javascript, HTML/CSS
 
@@ -25,7 +25,7 @@ Project source code: [https://github.com/jarviscanada/jarvis_data_eng_ShadabShai
 
 **Springboot Trading App** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_ShadabShaikh/tree/master/springboot)]: Built a trading platform that applies microservice architecture to replace a legacy system using monolithic architecture. This application manages clients and accounts and facilitates online stock trading and is presented as a proof of concept to the Jarvis trading team. Project utilizes Springboot for dependency injection, JDBC for postgres RDBMS connection, Apache Tomcat to implement Java Servlet and Swagger UI for front-end interaction.
 
-**Python Data Analytics** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_ShadabShaikh/tree/master/python_data_anlytics)]: To be implemented.
+**Python Data Analytics** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_ShadabShaikh/tree/master/python_data_anlytics)]: Performed data wrangling and analytics on sales data collected by the London Gift Shop to assist the marketing team to develop better marketing strategies. Data provided from the OLTP data warehouse was imported to a local (OLAP) Postgres database running on docker with a bridge connected to a Jupyter notebook container. Sales data was parsed and analyzed in Python running Pandas and Numpy to produce shopping insights such as monthly sales by new customers and sales growth percentages. Matplotlib was utilized for graphing and analysis against the psql database resulted in RFM metrics commonly used for evaluating sales in retail industries.
 
 **Hadoop** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_ShadabShaikh/tree/master/hadoop)]: To be implemented.
 

@@ -27,7 +27,7 @@ Project source code: [https://github.com/jarviscanada/jarvis_data_eng_ShadabShai
 
 **Python Data Analytics** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_ShadabShaikh/tree/master/python_data_anlytics)]: Performed data wrangling and analytics on sales data collected by the London Gift Shop to assist the marketing team to develop better marketing strategies. Data provided from the OLTP data warehouse was imported to a local (OLAP) Postgres database running on docker with a bridge connected to a Jupyter notebook container. Sales data was parsed and analyzed in Python running Pandas and Numpy to produce shopping insights such as monthly sales by new customers and sales growth percentages. Matplotlib was utilized for graphing and analysis against the psql database resulted in RFM metrics commonly used for evaluating sales in retail industries.
 
-**Hadoop** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_ShadabShaikh/tree/master/hadoop)]: To be implemented.
+**Hadoop** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_ShadabShaikh/tree/master/hadoop)]: Provisioned a GCP Dataproc cluster to import and perform data analytics using the Hadoop ecosystem and Apache Hive. Applied MapReduce using multiple nodes on the 2016 World Development Indicator data stored in HDFS for fast, parallel data reads. Queries were made through Beeline CLI and Zeppelin Notebook to produce a presentable and commentated notebook. Parsed data using file optimizations such as partitioning and parquet formatting to speed up query results by up to 80%.
 
 **Spark** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_ShadabShaikh/tree/master/spark)]: To be implemented.
 

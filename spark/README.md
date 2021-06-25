@@ -24,7 +24,7 @@ The data set used in this project was retail data from the London Gift Shop in t
 The schema was constructed beforehand to get specific assignments (invoice_no and invoice_date) which were inferred as other object types. The data set was previously used in the [Python Project](../python_data_wrangling) and most of the extraction from PostgreSQL to a .csv format was already done.
 
 ## Architecture and Workflow
-![Databricks arc](/assets/spark-architecture.jpg)
+![Databricks arc](assets/spark_architecture.png)
 
 The main components are Databricks Workspace, Azure Storage and Azure Virtual Machine. The Databricks workspace provides setup of data, clusters and a notebook development environment along with the implementation of Apache Spark on the data clusters. The Storage can be handled from potentially different sources, namely the Databricks File System (DBFS). The DBFS is an abstraction on top of scalable object storage while still providing access with simple pathnames to files ("dbfs://...") or directory and file semantics regardless if the storage system is HDFS or S3 etc. Also gives the added benefit of persisting files to object storage so data is not lost after the cluster is terminated.
 
